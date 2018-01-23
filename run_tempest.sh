@@ -1,0 +1,33 @@
+#!/bin/bash -xe
+
+export  HEAT_TAG="33f285086761b237d1ee52684746255e6c433aa2"
+
+source /home/rally/$SOURCE_FILE
+
+log_dir="${LOG_DIR:-/home/rally/rally_reports/}"
+mkdir -p $log_dir
+
+report='report_'$SET'_'`date +%F_%H-%M`
+log=$log_dir/$report.log
+rally-manage db recreate
+rally deployment create --fromenv --name=tempest
+rally verify create-verifier --type tempest --name tempest-verifier --source /var/lib/tempest --version $TEMPEST_TAG  --system-wide
+rally verify add-verifier-ext --source /var/lib/heat-tempest-plugin/ --version $HEAT_TAG
+
+source /home/rally/rally-tempest-heat/prepare_env.sh
+
+rally verify configure-verifier --extend /var/lib/lvm_mcp.conf 
+
+mkdir /etc/tempest
+rally verify configure-verifier --show > /etc/tempest/tempest.conf
+sed -i '1,3d' /etc/tempest/tempest.conf
+
+rally verify configure-verifier --show | tee -a $log
+if [ $SET ]
+then
+    rally verify start --skip-list /var/lib/mcp_skip.list --pattern set=$SET | tee -a  $log
+else
+    rally verify start --skip-list /var/lib/mcp_skip.list $CUSTOM  | tee -a  $log
+fi
+rally verify report --type junit-xml --to $log_dir/$report.xml
+rally verify report --type html --to $log_dir/$report.html
