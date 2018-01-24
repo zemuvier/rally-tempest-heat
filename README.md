@@ -28,16 +28,6 @@ docker run --rm --net=host \
 * **CUSTOM** - Custom parameters for tempest, for example `CUSTOM='--pattern <pass_to_tests>'` . If **CUSTOM** doesn't exist, a container uses **SET**
 * **CONCURRENCY** - How many processes to use to run Tempest tests.  The default value `CONCURRENCY=0` auto-detects CPU count
 * **TEMPEST_CONF** - A tempest.conf's file name. It is possible to use predefine tempest.conf or a custom file. In this case the file should be available in the `LOG_DIR`. The current image contains and supports the follow predefine tempest config files:
-    1. `mcp.conf` supports latest feature and can be used with the most MCP model or like a template
-    2. `aio_mcp.conf` doesn't support live migration and can be used with All-In-One model
-    3. `lvm_mcp.conf` is used with most virtual models (LVM storage)
-    4. `ceph_mcp.conf` is used with ceph-ha model (CEPH storage)
+    `lvm_mcp.conf` is used with most virtual models (LVM storage)
     
-    By default `TEMPEST_CONF=aio_mcp.conf`
 * **SKIP_LIST** - A skip.list's file name. It is possible to use predefine tempest.conf (`mcp_skip.list`) or a custom file. In this case the file should be available in the `LOG_DIR`. By default `SKIP_LIST=mcp_skip.list`
-* **REPORT_SUFFIX** - Empty by default. If **REPORT_SUFFIX** is empty or not passed to docker, report name will use **SET** variable. Else, this variable will be a part of image name
-
-## SSL/TLS support:
-
-If the environment uses a self-signed certificate, please mount certificate's folder to the container:
-`-v /etc/ssl/certs/:/etc/ssl/certs/`
