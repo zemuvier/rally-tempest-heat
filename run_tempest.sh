@@ -57,14 +57,14 @@ rally-manage db recreate
 rally deployment create --fromenv --name=tempest
 rally verify create-verifier --type tempest \
     --name tempest-verifier \
+    --source /var/lib/tempest \
     --version $TEMPEST_TAG \
     --system-wide
 rally verify add-verifier-ext --source /var/lib/heat-tempest-plugin \
     --version $HEAT_TAG
-
-source /home/rally/rally-tempest-heat/prepare_env.sh
-
-rally verify configure-verifier --extend $TEMPEST_CONF
+    
+source /var/lib/prepare_env.sh
+rally verify configure-verifier --extend /var/lib/lvm_mcp.conf --reconfigure
 rally verify configure-verifier --show | tee -a $log
 if [ -n "$CUSTOM" ]
 then
@@ -79,5 +79,3 @@ else
 fi
 rally verify report --type junit-xml --to $LOG_DIR/$report.xml
 rally verify report --type html --to $LOG_DIR/$report.html
-
-

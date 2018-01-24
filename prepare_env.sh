@@ -53,7 +53,7 @@ $option = $value
 
 export conf_file=/var/lib/lvm_mcp.conf
 
-source /home/rally/keystonercv3 
+source /home/rally/keystonercv3
 
 iniset $conf_file heat_plugin username $OS_USERNAME
 iniset $conf_file heat_plugin password $OS_PASSWORD
