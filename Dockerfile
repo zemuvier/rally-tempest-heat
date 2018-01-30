@@ -19,6 +19,7 @@ COPY *.list /var/lib/
 COPY *.conf /var/lib/
 COPY run_tempest.sh /usr/bin/run-tempest
 COPY prepare_env.sh /var/lib/prepare_env.sh
+COPY generate_resources.sh /var/lib/generate_resources.sh
 
 ENV LOG_DIR /home/rally/rally_reports/
 ENV SET smoke
