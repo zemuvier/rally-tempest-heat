@@ -13,8 +13,8 @@ RUN git clone https://github.com/openstack/tempest.git -b $TEMPEST_TAG && \
     git clone https://github.com/openstack/heat-tempest-plugin.git && \
     apt install wget && \
     apt-get update -qq && \
-    apt install python-openstackclient && \
-    apt install pyrhon3-openstackclient && \
+    apt install python-openstackclient -y && \
+    apt install pyrhon3-openstackclient -y && \
     pip install ansible==2.3
 
 WORKDIR /home/rally
