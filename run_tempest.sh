@@ -62,11 +62,12 @@ rally verify create-verifier --type tempest \
     --system-wide
 rally verify add-verifier-ext --source /var/lib/heat-tempest-plugin \
     --version $HEAT_TAG
-    
-source /var/lib/prepare_env.sh
+
+bash /var/lib/generate_resources.sh    
+bash /var/lib/prepare_env.sh
 rally verify configure-verifier --extend /var/lib/lvm_mcp.conf --reconfigure
 rally verify configure-verifier --show | tee -a $log
-source /var/lib/generate_resources.sh
+
 if [ -n "$CUSTOM" ]
 then
     rally verify start \

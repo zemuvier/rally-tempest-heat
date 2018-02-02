@@ -11,6 +11,9 @@ USER root
 RUN git clone https://github.com/openstack/tempest.git -b $TEMPEST_TAG && \
     pip install tempest==$TEMPEST_TAG && \
     git clone https://github.com/openstack/heat-tempest-plugin.git && \
+    apt install wget && \
+    apt install python-openstackclient && \
+    apt install pyrhon3-openstackclient && \
     pip install ansible==2.3
 
 WORKDIR /home/rally
