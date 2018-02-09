@@ -1,1 +1,18 @@
 tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_network_basic_ops[compute,id-f323b3ba-82f8-4db7-8ea6-6a895869ec49,network,smoke]: Skipped because fails time to time, port doesn't become ACTIVE quickly. Will be fixed
+heat_tempest_plugin.tests.functional.test_template_validate.StackTemplateValidateTest.test_template_validate_basic: Skipped because returned env does't supported on Pike.
+heat_tempest_plugin.tests.functional.test_template_validate.StackTemplateValidateTest.test_template_validate_basic_required_param: Skipped because returned env does't supported on Pike.
+heat_tempest_plugin.tests.functional.test_template_validate.StackTemplateValidateTest.test_template_validate_nested_off: Skipped because returned env does't supported on Pike.
+heat_tempest_plugin.tests.functional.test_template_validate.StackTemplateValidateTest.test_template_validate_nested_on: Skipped because returned env does't supported on Pike.
+heat_tempest_plugin.tests.functional.test_template_validate.StackTemplateValidateTest.test_template_validate_nested_on_multiple: Skipped because returned env does't supported on Pike.
+heat_tempest_plugin.tests.functional.test_template_validate.StackTemplateValidateTest.test_template_validate_override_default: Skipped because returned env does't supported on Pike.
+heat_tempest_plugin.tests.functional.test_template_validate.StackTemplateValidateTest.test_template_validate_override_none: Skipped because returned env does't supported on Pike.
+heat_tempest_plugin.tests.functional.test_template_validate.StackTemplateValidateTest.test_template_validate_parameter_groups: Skipped because returned env does't supported on Pike.
+heat_tempest_plugin.tests.functional.test_unicode_template.StackUnicodeTemplateTest.test_template_validate_basic: Skipped because returned env does't supported on Pike.
+heat_tempest_plugin.tests.functional.test_unicode_template.StackUnicodeTemplateTest.test_template_validate_override_default: Skipped because returned env does't supported on Pike.
+heat_tempest_plugin.tests.functional.test_resource_group.ResourceGroupAdoptTest.test_adopt: Skipped because of adopt is not supported.
+heat_tempest_plugin.tests.functional.test_template_resource.TemplateResourceAdoptTest.test_adopt:  Skipped because of adopt is not supported.
+heat_tempest_plugin.tests.functional.test_template_resource.TemplateResourceAdoptTest.test_abandon: Skipped because of abandon is not supported.
+heat_tempest_plugin.tests.scenario.test_aodh_alarm.AodhAlarmTest.test_alarm: Skipped because we need to use gnocchiclient. Will be fixed
+heat_tempest_plugin.tests.functional.test_event_sinks.ZaqarEventSinkTest.test_events: Skipped we does't support Zaqar.
+heat_tempest_plugin.tests.functional.test_waitcondition.ZaqarWaitConditionTest.test_signal_queues: Skipped we does't support Zaqar.
+heat_tempest_plugin.tests.functional.test_purge.PurgeTest.test_purge: Skipped because of heat-manage does't support into docker.
