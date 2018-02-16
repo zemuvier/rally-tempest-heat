@@ -51,9 +51,9 @@ $option = $value
     $xtrace
 }
 
-export conf_file=/var/lib/lvm_mcp.conf
+export conf_file=$TEMPEST_CONF
 
-source /home/rally/keystonercv3
+source $SOURCE_FILE
 
 iniset $conf_file heat_plugin username $OS_USERNAME
 iniset $conf_file heat_plugin password $OS_PASSWORD
