@@ -1,7 +1,7 @@
 FROM xrally/xrally-openstack:0.10.0
 
 ENV TEMPEST_TAG="17.2.0"
-ENV HEAT_TAG="b4acd96ee35e8839c22ca6dc08034fca684a2a22"
+ENV HEAT_TAG="d908bef47d0809c52a43c38d7fc879a525b4580c"
 
 WORKDIR /var/lib
 USER root
@@ -18,6 +18,12 @@ RUN git clone https://github.com/openstack/tempest.git -b $TEMPEST_TAG && \
     apt-get install iputils-ping -y && \
     pip install ansible==2.3
 
+WORKDIR /var/lib/heat-tempest-plugin
+
+RUN git checkout $HEAT_TAG && \
+    pip install -r requirements.txt && \
+    pip install -r test-requirements.txt
+
 WORKDIR /home/rally
 
 COPY *.list /var/lib/
@@ -31,12 +37,6 @@ ENV SET smoke
 ENV CONCURRENCY 0
 ENV TEMPEST_CONF lvm_mcp.conf
 ENV SKIP_LIST mcp_skip.list
-
-WORKDIR /var/lib/heat-tempest-plugin
-
-RUN git checkout $HEAT_TAG && \
-    pip install -r requirements.txt && \
-    pip install -r test-requirements.txt
 
 ENV SOURCE_FILE /home/rally/keystonercv3
 

@@ -65,6 +65,7 @@ rally verify add-verifier-ext --source /var/lib/heat-tempest-plugin \
 
 bash /var/lib/generate_resources.sh    
 bash /var/lib/prepare_env.sh
+
 rally verify configure-verifier --extend $TEMPEST_CONF --reconfigure
 rally verify configure-verifier --show | tee -a $log
 
